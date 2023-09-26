@@ -1,0 +1,62 @@
+<div class="container">
+    <div class="form-box">
+      <h2>Cadastro</h2>
+      <h3>Você é...</h3>
+      <button (click)="selectFunction('paciente')">Paciente</button>
+      <button (click)="selectFunction('psicologo')">Psicólogo</button>
+  
+      <form>
+        <div *ngIf="selectedFunction === 'paciente'">
+          <label for="nome">Nome:</label>
+          <input type="text" id="nome" name="nome" required>
+  
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required>
+  
+          <label for="senha">Senha:</label>
+          <input type="password" id="senha" name="senha" required>
+
+          <label for="cpf">CPF:</label>
+          <input type="text" id="cpf" name="cpf" required>
+
+          <label for="estado">Estado:</label>
+          <input type="text" id="estado" name="estado" >
+
+          <label for="Cidade">Cidade:</label>
+          <input type="text" id="cidade" name="cidade" >
+
+          <label for="telefone">Telefone:</label>
+          <input type="number" id="telefone" name="telefone" >
+        </div>
+  
+        <div *ngIf="selectedFunction === 'psicologo'">
+          <label for="nome">Nome:</label>
+          <input type="text" id="nome" name="nome" required>
+  
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required>
+
+          <label for="senha">Senha:</label>
+          <input type="password" id="senha" name="senha" required>
+
+          <label for="cpf">CPF:</label>
+          <input type="text" id="cpf" name="cpf" required>
+  
+          <label for="crp">CRP:</label>
+          <input type="text" id="crp" name="crp" required>
+
+          <label for="estado">Estado:</label>
+          <input type="text" id="estado" name="estado" >
+
+          <label for="Cidade">Cidade:</label>
+          <input type="text" id="cidade" name="cidade" >
+
+          <label for="telefone">Telefone:</label>
+          <input type="number" id="telefone" name="telefone" >
+        </div>
+  
+        <button type="submit">Cadastrar</button>
+      </form>
+    </div>
+  </div>
+  

@@ -1,0 +1,23 @@
+<!-- app.component.html -->
+<div class="login-container">
+    <div class="login-box">
+      <h2>Login</h2>
+      <form>
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" class="form-control" required>
+        </div>
+        <div class="form-group">
+          <label for="password">Senha:</label>
+          <input type="password" id="password" name="password" class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Entrar</button>
+      </form>
+      <div class="options">
+        <a href="#">Recuperar Senha</a>
+        <span>|</span>
+        <a [routerLink]="['/cadastro']">Cadastrar</a>
+      </div>
+    </div>
+  </div>
+  
