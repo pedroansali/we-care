@@ -44,3 +44,13 @@ header{
     text-align: left;
     gap: 15px;
 }
+
+footer {
+    background-color: $hover-button-color;
+    padding: 20px;
+    text-align: center;
+  }
+
+  p {
+    margin: 0;
+  }
