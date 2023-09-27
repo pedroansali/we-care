@@ -8,7 +8,7 @@ import * as Parse from 'parse';
 })
 export class AppComponent {
   constructor(){
-    Parse.initialize("DhfqZaozdGV6FKMO1RhkwOsoRACmQo1upy478yfi","yzCWazMAgDqw31lvVuZBzrKqXV7Wa6nY9WvGUsGQ"); //PASTE HERE YOUR Back4App APPLICATION ID AND YOUR JavaScript KEY
+    Parse.initialize("kyl9W1N6CuZWtOQhsF34Ehe9PyzNgMw8eIKKan66","9cYcu6YnT5uKNVh6MVZcBtPWfHFDcFLoFzacNtnF"); //PASTE HERE YOUR Back4App APPLICATION ID AND YOUR JavaScript KEY
     Parse.serverURL = 'https://parseapi.back4app.com/'
   }
   title = 'WeCare';

@@ -18,6 +18,7 @@ export class CadastroComponent {
     this.cadastroForm = this.formBuilder.group({
       nome: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
+      usuario: ['', [Validators.required]],
       senha: ['', [Validators.required]],
       cpf: ['', [Validators.required]],
       crp: ['', [Validators.nullValidator]],
@@ -33,52 +34,58 @@ export class CadastroComponent {
   }
 
   cadastrar() {
+    window.localStorage.clear()
     if (this.cadastroForm.valid) {
       const dadosFormulario = this.cadastroForm.value;
       // Agora você pode usar os dados do formulário, por exemplo:
       console.log('Dados do formulário:', dadosFormulario);
 
       if (this.selectedFunction =='paciente'){
-        (async () => {
-          const novoPaciente: Parse.Object = new Parse.Object('Paciente');
-          novoPaciente.set('nome', dadosFormulario.nome);
-          novoPaciente.set('email', dadosFormulario.email);
-          novoPaciente.set('senha', dadosFormulario.senha);
-          novoPaciente.set('cpf', dadosFormulario.cpf);
-          novoPaciente.set('cidade', dadosFormulario.cidade);
-          novoPaciente.set('estado', dadosFormulario.estado);
-          novoPaciente.set('telefone', dadosFormulario.telefone);
-          try {
-            const result: Parse.Object = await novoPaciente.save();
-            // Access the Parse Object attributes using the .GET method
-            console.log('Nome do usuário: ', result.get('nome'));
-            console.log('Email do usuário: ', result.get('email'));
-            console.log('Usuário Criado!', result);
-            this.toastr.success('Usuário cadastrado com sucesso!');
-            this.router.navigate(['']);
-          } catch (error: any) {
-            console.error('Erro ao criar novo usuário: ', error);
-            this.toastr.error('Erro ao cadastrar usuário!');
-          }
-        })();
+          (async () => {
+            const user: Parse.User = new Parse.User();
+            user.set('nome', dadosFormulario.nome);
+            user.set('username', dadosFormulario.usuario);
+            user.set('email', dadosFormulario.email);
+            user.set('password', dadosFormulario.senha);
+            user.set('cpf', dadosFormulario.cpf);
+            user.set('crp', dadosFormulario.crp);
+            user.set('cidade', dadosFormulario.cidade);
+            user.set('estado', dadosFormulario.estado);
+            user.set('telefone', dadosFormulario.telefone);
+            user.set('role', this.selectedFunction);
+          
+            try {
+              let userResult: Parse.User = await user.signUp();
+              console.log('Nome do usuário: ', userResult.get('usuario'));
+              console.log('Email do usuário: ', userResult.get('email'));
+              console.log('Usuário Criado!', userResult);
+              this.toastr.success('Usuário cadastrado com sucesso!');
+              this.router.navigate(['']);
+            } catch (error: any) {
+              console.error('Erro ao criar novo usuário: ', error);
+              this.toastr.error('Erro ao cadastrar usuário!');
+            }
+          })();
       }
       if (this.selectedFunction =='psicologo'){
         (async () => {
-          const novoPsicologo: Parse.Object = new Parse.Object('Profissional');
-          novoPsicologo.set('nome', dadosFormulario.nome);
-          novoPsicologo.set('email', dadosFormulario.email);
-          novoPsicologo.set('senha', dadosFormulario.senha);
-          novoPsicologo.set('cpf', dadosFormulario.cpf);
-          novoPsicologo.set('crp', dadosFormulario.crp);
-          novoPsicologo.set('cidade', dadosFormulario.cidade);
-          novoPsicologo.set('estado', dadosFormulario.estado);
-          novoPsicologo.set('telefone', dadosFormulario.telefone);
+          const user: Parse.User = new Parse.User();
+          user.set('nome', dadosFormulario.nome);
+          user.set('username', dadosFormulario.usuario);
+          user.set('email', dadosFormulario.email);
+          user.set('password', dadosFormulario.senha);
+          user.set('cpf', dadosFormulario.cpf);
+          user.set('crp', dadosFormulario.crp);
+          user.set('cidade', dadosFormulario.cidade);
+          user.set('estado', dadosFormulario.estado);
+          user.set('telefone', dadosFormulario.telefone);
+          user.set('role', this.selectedFunction);
+        
           try {
-            const result: Parse.Object = await novoPsicologo.save();
-            // Access the Parse Object attributes using the .GET method
-            console.log('Nome do usuário: ', result.get('nome'));
-            console.log('Email do usuário: ', result.get('email'));
-            console.log('Usuário Criado!', result);
+            let userResult: Parse.User = await user.signUp();
+            console.log('Nome do usuário: ', userResult.get('usuario'));
+            console.log('Email do usuário: ', userResult.get('email'));
+            console.log('Usuário Criado!', userResult);
             this.toastr.success('Usuário cadastrado com sucesso!');
             this.router.navigate(['']);
           } catch (error: any) {
