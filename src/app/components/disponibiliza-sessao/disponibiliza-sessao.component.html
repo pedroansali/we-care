@@ -1,0 +1,15 @@
+<div class="h2">Adicionar nova sessão</div>
+
+<form [formGroup]="addSessaoForm" (ngSubmit)="addSessao()">
+    <div>
+        <label for="nome">Profissional: {{nomeUsuario}}</label>
+
+        <label for="data">Data da sessão:</label>
+        <input type="datetime-local" id="data" formControlName="dataSessao" required>
+
+        <label for="valor">Valor (R$):</label>
+        <input type="number" id="valor" formControlName="valor" required>
+    </div>
+    <button type="submit">Disponibilizar Sessão</button>
+    <button mat-dialog-close="closeAddSessao">Descartar</button>
+    </form>

@@ -26,8 +26,8 @@ export class LoginComponent {
         let user: Parse.User = await Parse.User.logIn(this.userData.usuario,this.userData.senha);
         // Do stuff after successful login
         console.log('Logado no usuário', user);
-        this.toastr.success('Usuário cadastrado com sucesso!');
-        this.router.navigate(['home']);
+        this.toastr.success('Login bem sucedido');
+        this.router.navigate(['home'], { queryParams: { usuario: this.userData.usuario, senha: this.userData.senha } });
       } catch (error: any) {
         console.error('Erro ao logar com o usuário informado', error);
       }

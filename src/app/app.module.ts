@@ -11,6 +11,9 @@ import { LoginComponent } from './pages/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxMaskDirective, NgxMaskPipe } from 'ngx-mask';
 import { ToastrModule } from 'ngx-toastr';
+import {MatDialogModule} from '@angular/material/dialog';
+import { DisponibilizaSessaoComponent } from './components/disponibiliza-sessao/disponibiliza-sessao.component';
+
 
 @NgModule({
   declarations: [
@@ -19,6 +22,7 @@ import { ToastrModule } from 'ngx-toastr';
     HomeComponent,
     CadastroComponent,
     LoginComponent,
+    DisponibilizaSessaoComponent,
   ],
   imports: [
     BrowserModule,
@@ -29,6 +33,7 @@ import { ToastrModule } from 'ngx-toastr';
     ReactiveFormsModule,
     ToastrModule.forRoot(),
     FormsModule,
+    MatDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
