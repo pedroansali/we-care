@@ -4,7 +4,7 @@
     <div class="col-md-6"> 
       <h2>Olá {{nomeUsuario}}, seja bem-vindo!</h2>
       
-      <button *ngIf="!isPsicologo()" btn btn-primary>Realizar agendamento de sessão</button>
+      <button *ngIf="!isPsicologo()" btn btn-primary (click)="addAgendamento()">Realizar agendamento de sessão</button>
 
       <button *ngIf="isPsicologo()" btn btn-primary (click)="openSessao()">Disponibilizar sessão para agendamento</button>
     </div>

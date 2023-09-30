@@ -13,6 +13,7 @@ import { NgxMaskDirective, NgxMaskPipe } from 'ngx-mask';
 import { ToastrModule } from 'ngx-toastr';
 import {MatDialogModule} from '@angular/material/dialog';
 import { DisponibilizaSessaoComponent } from './components/disponibiliza-sessao/disponibiliza-sessao.component';
+import { CriarAgendamentoComponent } from './components/criar-agendamento/criar-agendamento.component';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { DisponibilizaSessaoComponent } from './components/disponibiliza-sessao/
     CadastroComponent,
     LoginComponent,
     DisponibilizaSessaoComponent,
+    CriarAgendamentoComponent,
   ],
   imports: [
     BrowserModule,

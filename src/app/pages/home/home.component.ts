@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import * as Parse from 'parse';
 import {MatDialog} from '@angular/material/dialog';
 import { DisponibilizaSessaoComponent } from '../../components/disponibiliza-sessao/disponibiliza-sessao.component'
+import { CriarAgendamentoComponent } from 'src/app/components/criar-agendamento/criar-agendamento.component';
 
 
 @Component({
@@ -17,10 +18,42 @@ export class HomeComponent {
   idUsuario: string;
   roleUsuario: string;
   modal: any;
+  
 
 
+
+  
+
+  ngOnInit() {
+    const currentUser = Parse.User.current();
+    //console.log(currentUser.role)
+    // Dado do usuário que vem do login
+    this.route.queryParams.subscribe(params => {
+      this.usuario = params['usuario'];
+      this.senha = params['senha'];
+    });
+    (async () => {
+      (async () => {
+        try {
+          let user: Parse.User = await Parse.User.logIn(this.usuario,this.senha);
+          const currentUser: Parse.User = Parse.User.current();
+          console.log(currentUser.id);
+          console.log(currentUser.attributes.role);
+          this.roleUsuario = currentUser.attributes.role;
+          this.idUsuario = currentUser.id;
+          this.nomeUsuario = currentUser.attributes.nome;
+          
+          console.log('Logado no usuário: ', currentUser);
+        } catch (error: any) {
+          console.error('Erro ao logar', error);
+        }
+      })();
+    })();
+
+  }
 
   isPsicologo(){
+    
     if(this.roleUsuario == "paciente"){
       return false;
     }else{
@@ -28,38 +61,20 @@ export class HomeComponent {
     }
   }
 
-  ngOnInit() {
-    // Dado do usuário que vem do login
-    this.route.queryParams.subscribe(params => {
-      this.usuario = params['usuario'];
-      this.senha = params['senha'];
-    });
-    (async () => {
-      const query: Parse.Query = new Parse.Query('User').equalTo('username',this.usuario);
-      // You can also query by using a parameter of an object
-      // query.equalTo('objectId', 'xKue915KBG');
-      const results: Parse.Object[] = await query.find();
-      try {
-        for (const object of results) {
-          // Access the Parse Object attributes using the .GET method
-          const nomeUsuario: string = object.get('nome');
-          const idUsuario: any = object.get('objectId');
-          const roleUsuario: string = object.get('role');
-          this.nomeUsuario = nomeUsuario;
-          this.idUsuario = JSON.parse(JSON.stringify(results));
-          this.idUsuario = idUsuario[0].objectId;
-          this.roleUsuario = roleUsuario;
-          console.log(idUsuario);
-        }
-      } catch (error: any) {
-        console.error('Error while fetching User', error);
-      }
-    })();
-
-  }
-
   constructor(private route: ActivatedRoute, public dialogRef: MatDialog) { 
     
+  }
+
+  addAgendamento(){
+    this.dialogRef.open(CriarAgendamentoComponent, {
+      data : {
+        nomeUsuario : this.nomeUsuario,
+        idUsuario : this.idUsuario,
+        roleUsuario : this.roleUsuario,
+      },
+      height: '400px',
+      width: '600px',
+    });
   }
 
   openSessao(){
