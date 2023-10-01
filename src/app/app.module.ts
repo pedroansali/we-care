@@ -14,6 +14,7 @@ import { ToastrModule } from 'ngx-toastr';
 import {MatDialogModule} from '@angular/material/dialog';
 import { DisponibilizaSessaoComponent } from './components/disponibiliza-sessao/disponibiliza-sessao.component';
 import { CriarAgendamentoComponent } from './components/criar-agendamento/criar-agendamento.component';
+import { MatSelectModule } from '@angular/material/select';
 
 
 @NgModule({
@@ -36,6 +37,7 @@ import { CriarAgendamentoComponent } from './components/criar-agendamento/criar-
     ToastrModule.forRoot(),
     FormsModule,
     MatDialogModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

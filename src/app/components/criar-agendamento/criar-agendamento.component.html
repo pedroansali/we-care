@@ -1,1 +1,20 @@
 <p>criar-agendamento works!</p>
+
+<h1>Agendamento de Sessão</h1>
+
+<h3>Selecione uma sessão disponível:</h3>
+<h3>Data: </h3>
+<mat-form-field>
+<mat-label></mat-label>
+  <mat-select [(ngModel)]="dataEscolhida" >
+    <mat-option *ngFor="let opcao of sessoes" [value]="opcao.data"  (onSelectionChange)="idSessaoEscolhida(opcao.id)">
+      {{ opcao.data }}
+    </mat-option>
+</mat-select>
+</mat-form-field>
+
+<h3>Profissional: {{nomePsicologoSessaoAgendada}}</h3>
+<h3>Valor: {{valorSessaoAgendada}}</h3>
+
+<button mat-button (click)="addAgendamento()">Disponibilizar Sessão</button>
+<button mat-dialog-close="closeAddAgendamento">Descartar</button>
