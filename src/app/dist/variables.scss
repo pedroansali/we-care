@@ -2,3 +2,29 @@
 
 $hover-button-color: #4877D3;
 $off-button-color: #A0A0A0;
+
+@import url('https://fonts.googleapis.com/css2?family=Gabarito:wght@400;500;600;700;800;900&display=swap');
+
+//Fontes
+$fonte-conteudo: 'Gabarito', cursive;
+
+//Padrão
+$green-default: #96df5a;
+$blue-default: #4a7ad0;
+$black: #191414;
+$gray: #575757;
+
+//Secundárias
+$white: #FFFFFF;
+$white-gray: #efecec;
+
+//Apple Music
+$silver-lake-blue: #578dbb;
+$kelly-green: #80bf40;
+$green-mantis: #82c977;
+$cambridge-blue: #6fad94;
+
+
+//Gradientes
+$gradiente-01: linear-gradient(90deg, #578dbb, #80bf40, #82c977, #6fad94);
+$gradiente-02: radial-gradient(#578dbb, #80bf40);

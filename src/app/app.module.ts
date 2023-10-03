@@ -15,6 +15,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { DisponibilizaSessaoComponent } from './components/disponibiliza-sessao/disponibiliza-sessao.component';
 import { CriarAgendamentoComponent } from './components/criar-agendamento/criar-agendamento.component';
 import { MatSelectModule } from '@angular/material/select';
+import { FooterComponent } from './components/footer/footer.component';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { MatSelectModule } from '@angular/material/select';
     LoginComponent,
     DisponibilizaSessaoComponent,
     CriarAgendamentoComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,

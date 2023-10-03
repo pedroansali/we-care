@@ -1,9 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import * as Parse from 'parse';
 import {MatDialog} from '@angular/material/dialog';
 import { DisponibilizaSessaoComponent } from '../../components/disponibiliza-sessao/disponibiliza-sessao.component'
 import { CriarAgendamentoComponent } from 'src/app/components/criar-agendamento/criar-agendamento.component';
+import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
+
+
 
 
 @Component({
@@ -19,11 +23,6 @@ export class HomeComponent {
   roleUsuario: string;
   modal: any;
   
-
-
-
-  
-
   ngOnInit() {
     const currentUser = Parse.User.current();
     //console.log(currentUser.role)
