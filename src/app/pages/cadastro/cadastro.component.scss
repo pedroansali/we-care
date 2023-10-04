@@ -62,8 +62,14 @@ button[type="submit"]:hover {
   background-color: #0056b3;
 }
 
+
 @import '../../dist/variables.scss';
 @import '../../dist/functions';
+
+.signin-info {
+  font-size: 1em;
+  font-family: $fonte-conteudo;
+}
 
 .signin {
     display: flex;
@@ -85,6 +91,8 @@ button[type="submit"]:hover {
         justify-content: center;
         background-color: $white;
 
+        
+
         .conteudo {
             display: flex;
             flex-direction: column;
@@ -93,6 +101,7 @@ button[type="submit"]:hover {
             width: 50%;
             height: auto;
             padding: 2rem;
+            
 
             .signin-titulo {
                 font-family: $fonte-conteudo;

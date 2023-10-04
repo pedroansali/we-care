@@ -263,3 +263,68 @@ table {
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/*---- Toaster ----*/
+
+.toast {
+  padding: 10px;
+  position: fixed;
+  background: gray;
+  bottom: -100px;
+  right: 20px;
+  border-radius: 10px;
+  -webkit-box-shadow: 0 6px 6px rgba(0, 0, 0, 0.36);
+  box-shadow: 0 6px 6px rgba(0, 0, 0, 0.36);
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+
+  &.sucess {
+    background-color: #80c242;
+  }
+
+  &.error {
+    background-color: #e32119;
+  }
+
+  &.aviso {
+    background-color: #f58a1f;
+  }
+
+  &.help {
+    background-color: #1577aa;
+  }
+
+  .close {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    background: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    color: #fff;
+    font-size: 1.5em;
+  }
+
+  .title {
+    font-size: 1.2em;
+    color: #fff;
+  }
+
+  .message {
+    color: #fff;
+    max-width: 400px;
+  }
+
+  &.in {
+    bottom: 20px;
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+  }
+
+  &.out {
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    bottom: -200px;
+  }
+}

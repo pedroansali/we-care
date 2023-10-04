@@ -13,53 +13,30 @@
         <header class="cabecalho"></header>
         <main class="login">
             <div class="imagem-background"></div>
+            
             <div class="login-conteudo">
                 <div class="conteudo">
                     <h1 class="login-titulo">
                         Log <strong class="titulo-destaque1">in</strong>
                     </h1>
+                    <form (ngSubmit)="login()">
                     <div class="login-campos">
-                        <input type="text" class="campo" placeholder="E-mail">
-                        <input type="text" class="campo" placeholder="Senha">
+                        <input type="text" id="usuario" name="usuario" class="campo" class="form-control" placeholder="Usuário" [(ngModel)]="userData.usuario" required>
+                        <input type="password" id="senha" name="senha" class="campo" class="form-control" placeholder="Senha" [(ngModel)]="userData.senha" required>
                     </div>
-                    <a href="#" class="login-botao-01">
-                        login
-                    </a>
+                    <button type="submit" class="login-botao-01">Entrar</button>
+                    </form>
                     <div class="login-linkA">
                         <p class="login-info">
                             Não possui conta?
                         </p>
-                        <a href="./signin.html" class="login-cadastro-link">
+                        <a [routerLink]="['/cadastro']" class="login-cadastro-link">
                             Cadastre-se
                         </a>
                     </div>
                 </div>
             </div>
+        
         </main>
     </body>
 </html>
-
-
-<!-- app.component.html -->
-<div class="login-container">
-    <div class="login-box">
-      <h2>Login</h2>
-      <form (ngSubmit)="login()">
-        <div class="form-group" >
-          <label for="email">Usuário:</label>
-          <input type="text" id="usuario" name="usuario" class="form-control" [(ngModel)]="userData.usuario" required>
-        </div>
-        <div class="form-group">
-          <label for="password">Senha:</label>
-          <input type="password" id="senha" name="senha" class="form-control" [(ngModel)]="userData.senha" required>
-        </div>
-        <button type="submit" class="btn btn-primary">Entrar</button>
-      </form>
-      <div class="options">
-        <!--<a href="#">Recuperar Senha</a>
-        <span>|</span> REAVALIAR RECUPERAÇÃO DE SENHA -->
-        <a [routerLink]="['/cadastro']">Cadastrar</a>
-      </div>
-    </div>
-  </div>
-  
