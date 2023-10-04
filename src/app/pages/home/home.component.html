@@ -4,14 +4,24 @@
     <div class="col-md-6"> 
       <h2>Olá {{nomeUsuario}}, seja bem-vindo!</h2>
       
-      <button *ngIf="!isPsicologo()" btn btn-primary (click)="addAgendamento()">Realizar agendamento de sessão</button>
+      <button *ngIf="!isPsicologo()" btn btn-primary (click)="addAgendamento()">Agendar nova consulta</button>
 
-      <button *ngIf="isPsicologo()" btn btn-primary (click)="openSessao()">Disponibilizar sessão para agendamento</button>
+      <button *ngIf="isPsicologo()" btn btn-primary (click)="openSessao()">Disponibilizar sessão</button>
     </div>
 
     <div class="col-md-6">
       <h2 *ngIf="!isPsicologo()">Consultas Agendadas</h2>
-      <h2 *ngIf="isPsicologo()">Sessões Agendadas</h2>
-      
+
+      <mat-list>
+        <mat-list-item *ngFor="let item of listaAgendamentos">
+          <span matListItemTitle>Data: {{item.data}}</span>
+          <span matListItemLine>Profissional: {{item.nomePsicologo}}</span>
+          <span matListItemLine>Valor: {{item.valor}}</span>
+        </mat-list-item>
+      </mat-list>
+
+      <h2 *ngIf="isPsicologo()">Sessões Agendadas</h2>      
     </div>
   </div>
+
+  <app-footer></app-footer>

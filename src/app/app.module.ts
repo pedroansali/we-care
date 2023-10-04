@@ -16,6 +16,9 @@ import { DisponibilizaSessaoComponent } from './components/disponibiliza-sessao/
 import { CriarAgendamentoComponent } from './components/criar-agendamento/criar-agendamento.component';
 import { MatSelectModule } from '@angular/material/select';
 import { FooterComponent } from './components/footer/footer.component';
+import { RealizarConsultaComponent } from './components/realizar-consulta/realizar-consulta.component';
+import { MatListModule } from '@angular/material/list';
+import { MatIconModule } from '@angular/material/icon';
 
 
 @NgModule({
@@ -28,6 +31,7 @@ import { FooterComponent } from './components/footer/footer.component';
     DisponibilizaSessaoComponent,
     CriarAgendamentoComponent,
     FooterComponent,
+    RealizarConsultaComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,7 +43,9 @@ import { FooterComponent } from './components/footer/footer.component';
     ToastrModule.forRoot(),
     FormsModule,
     MatDialogModule,
-    MatSelectModule
+    MatSelectModule,
+    MatListModule,
+    MatIconModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

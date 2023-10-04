@@ -6,6 +6,11 @@ import { DisponibilizaSessaoComponent } from '../../components/disponibiliza-ses
 import { CriarAgendamentoComponent } from 'src/app/components/criar-agendamento/criar-agendamento.component';
 import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { RealizarConsultaComponent } from 'src/app/components/realizar-consulta/realizar-consulta.component';
+import { MatListModule } from '@angular/material/list';
+import { MatIconModule } from '@angular/material/icon';
+import { Agendamento } from '../../interfaces/agendamento';
+
 
 
 
@@ -15,13 +20,16 @@ import { MatTableDataSource } from '@angular/material/table';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
-
+  listaAgendamentos: Agendamento[] = [];
+  agendamentoAtual: Agendamento;
+  dataAgendamento: string;
   usuario: string;
   senha: string;
   nomeUsuario: string;
   idUsuario: string;
   roleUsuario: string;
   modal: any;
+  idPsicologoSessao: string;
   
   ngOnInit() {
     const currentUser = Parse.User.current();
@@ -49,6 +57,71 @@ export class HomeComponent {
       })();
     })();
 
+    //LISTAR CONSULTAS AGENDADAS PRO USUÁRIO
+      (async () => {
+        const Appointment: Parse.Object = Parse.Object.extend('Appointment');
+        const query: Parse.Query = new Parse.Query(Appointment).equalTo('idPaciente', currentUser.id).include("owner");
+        try {
+          const lista: Parse.Object[] = await query.find();
+          for (const agendamento of lista) {         
+            //BUSCAR SESSÃO PRA PEGAR PSICOLOGO
+            const idSessao: string = agendamento.attributes.idSessao.id;
+            (async () => {
+              const Session: Parse.Object = Parse.Object.extend('Session');
+              const query: Parse.Query = new Parse.Query(Session).equalTo('objectId', idSessao);
+              try {
+                const sessoes: Parse.Object[] = await query.find();
+                for (const sessao of sessoes) {
+                  // ACHOU A SESSAO
+                  const idPsicologoSessao: string = sessao.get('idPsicologo');
+
+                  const data: string = sessao.get('data');
+                  const dataOriginal = new Date(data);
+                  const dataFormatoBrasileiro = `${dataOriginal.getDate().toString().padStart(2, '0')}/` +
+                  `${(dataOriginal.getMonth() + 1).toString().padStart(2, '0')}/` +
+                  `${dataOriginal.getFullYear()} ` + 
+                  `às ${dataOriginal.getHours().toString().padStart(2, '0')}:` +
+                  `${dataOriginal.getMinutes().toString().padStart(2, '0')}`;
+                  console.log(dataFormatoBrasileiro);
+                  this.idPsicologoSessao = idPsicologoSessao;
+
+                  //BUSCAR PSICOLOGO DA SESSAO
+                  (async () => {
+                    const User: Parse.User = new Parse.User();
+                    const query: Parse.Query = new Parse.Query(User);
+                  
+                    try {
+                      let user: Parse.Object = await query.get(this.idPsicologoSessao);
+                      //this.agendamento.nomePsicologo = user.nome;
+                      //console.log('Nome do psicologo encontrado');
+
+                      this.agendamentoAtual  = {
+                        id: agendamento.id,
+                        nomePsicologo: user.attributes.nome,
+                        valor: sessao.get('valor'),
+                        data: dataFormatoBrasileiro,
+                      }
+
+                      this.listaAgendamentos.push(this.agendamentoAtual);
+                    } catch (error: any) {
+                      console.error('Erro ao buscar nome do psicologo', error);
+                    }
+                  })();
+                }
+                
+              } catch (error: any) {
+                console.error('Erro ao buscar sessao para pegar nome do psicólogo', error);
+              }
+            })();
+            
+            console.log(this.listaAgendamentos)
+            
+          }
+        } catch (error: any) {
+          console.error('Erro ao buscar agendamentos do usuário', error);
+        }
+      })();
+    
   }
 
   isPsicologo(){
@@ -87,5 +160,19 @@ export class HomeComponent {
       width: '600px',
     });
   }
+
+  openConsulta(){
+    this.dialogRef.open(RealizarConsultaComponent, {
+      data : {
+        nomeUsuario : this.nomeUsuario,
+        idUsuario : this.idUsuario,
+        roleUsuario : this.roleUsuario,
+      },
+      height: '400px',
+      width: '600px',
+    });
+  }
 }
+
+
 
