@@ -1,177 +1,103 @@
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-image: url('../../../assets/CADASTRO.jpg');
-  /* Defina como a imagem de fundo deve se comportar */
-  background-size: cover; /* A imagem se estenderá para cobrir todo o elemento pai */
-  background-position: center center; /* Centraliza a imagem horizontal e verticalmente */
-  background-repeat: no-repeat; /* Evita a repetição da imagem de fundo */
-  /* Garanta que a imagem de fundo cubra toda a largura da tela */
-  width: 100%;
-  height: 100vh; /* Define a altura como 100% da altura da janela (viewport) */
-  
-}
+@import '../../dist/abstract/functions';
+@import '../../dist/abstract/variables';
 
-.form-box {
-  width: 400px;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: white;
-}
-
-h2 {
-  text-align: center;
-}
-
-h3 {
-  text-align: center;
-}
-
-button {
-  margin-bottom: 10px;
-  align-content: center;
-}
-
-label {
-  display: block;
-  margin-bottom: 5px;
-}
-
-input {
-  width: 100%;
-  padding: 5px;
-  margin-bottom: 10px;
-}
-
-button[type="submit"] {
-  width: 100%;
-  padding: 10px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-button[type="submit"]:hover {
-  background-color: #0056b3;
-}
-
-
-@import '../../dist/variables.scss';
-@import '../../dist/functions';
-
-.signin-info {
-  font-size: 1em;
-  font-family: $fonte-conteudo;
-}
-
-.signin {
+.cadastro-principal {
     display: flex;
-    flex-direction: row;
-    width: 100vw;
+    flex-direction: row-reverse;
     height: 100vh;
+    width: 100vw;
+    background-color: $branco-sal;
 
-    .imagem-background {
+    .cadastro-bloco01 {
         flex: 4;
-        background-image: url('/assets/bg-4.png');
+        background-image: url('/assets/bg-1.png');
         background-size: cover;
-        box-shadow: 0px 4px 8px rgba(0, 0, 0, .7);
+        border-bottom-left-radius: 20px;
+        border-top-left-radius: 20px;
+        box-shadow: -4px 0px 8px rgba(0, 0, 0, 0.2);
     }
 
-    .signin-conteudo {
+    .cadastro-bloco02 {
         flex: 6;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background-color: $white;
+        @include estilo-flexbox(column, center, none, 5rem, 20px);
+        width: 100%;
 
-        
+        .cadastro-bloco02-titulo {
+            align-self: flex-start;
+            @include estilo-texto ($azul-glacial, 3em, 800);
+            text-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
 
-        .conteudo {
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            gap: 25px;
-            width: 50%;
-            height: auto;
-            padding: 2rem;
-            
+        .bloco02-selecao {
+            width: 100%;
+            @include estilo-flexbox (row, space-between, none, none, 30px);
 
-            .signin-titulo {
-                font-family: $fonte-conteudo;
-                font-size: 3.5em;
-                font-weight: 800;
-                padding: .3rem 0rem;
-                text-shadow: 0px 4px 8px rgba(0, 0, 0, .2);
+            .bloco02-selecao-botao {
+                @include estilo-texto ($preto, 1rem, 700);
+                text-align: center;
+                padding: 1rem;
+                width: 100%;
+                background-color: transparent;
+                text-decoration: none;
+                cursor: pointer;
+                border-radius: 20px;
             }
 
-            .signin-campos {
+            .bloco02-selecao-botao:hover {
+                background-color: $verde-aspargo;
+                transition: 0.5s;
+                box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            }
+
+            .bloco02-selecao-botao:focus {
+                background-color: $verde-aspargo;
+                box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            }
+        }
+
+        .cadastro-bloco02-campos {
+            width: 100%;
+            @include estilo-flexbox (row, center, none, none, 20px);
+
+            .cadastro-bloco02-campos-colunas {
+                width: 50%;
                 display: flex;
                 flex-direction: column;
-                gap: 10px;
-                width: 100%;
+                gap: 15px;
 
-                .campo {
-                    width: 100%;
-                    border: none;
-                    border-bottom: .5px solid $black;
-                    padding: .8em .2em;
-                    font-size: 15px;
-                    font-family: $fonte-conteudo;
-                    font-weight: 500;
+                .cadastro-campo {
+                    padding: .8rem 1rem;
+                    width: 90%;
+                    @include estilo-texto ($preto, .8em, 600);
+                    border: 2px solid $branco-frances;
+                    border-radius: 15px;
+                    background-color: $branco-sal
                 }
+            }          
+        }
+        
+        .cadastro-botao {
+            @include etilo-botao-ancora (center, 1rem 1.5rem, none, $verde-mantis, fit-content, 30px);
+            @include estilo-texto ($preto, 1em, 700);
+            align-self: flex-end;
+            text-decoration: none;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            transition: .4s;
+            margin-top: 10px;
+        }
 
-                .campo:focus {
-                    outline: none;
-                }
-            }
+        .cadastro-botao:hover {
+            @include estilo-texto ($branco-sal, 1em, 700);
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+        }
 
-            .signin-botao-01 {
-                align-self: flex-end;
-                width: 25%;
-                padding: .6em;
+        .cadastro-botao-login {
+            @include estilo-flexbox (row, none, none, none, 10px);
+            align-self: center;
+            @include estilo-texto ($preto, 1em, 500);
 
-                border-radius: 25px;
-                border: 3px solid transparent;
-                background-color: $green-default;
-
-                text-align: center;
-                text-decoration: none;
-                color: $black;
-                font-size: 1em;
-                font-family: $fonte-conteudo;
-                font-weight: 500;
-                box-shadow: 0px 4px 8px rgba(0, 0, 0, .2);
-            }
-
-            .signin-botao-01:hover {
-                border: 3px solid $green-default;
-                background-color: transparent
-            }
-
-            .signin-linkA {
-                display: flex;
-                flex-direction: row;
-                gap: 5px;
-                justify-content: center;
-
-                .signin-info {
-                    font-size: 1em;
-                    font-family: $fonte-conteudo;
-                }
-
-                .signin-cadastro-link {
-                    font-size: 1em;
-                    font-family: $fonte-conteudo;
-                    color: $blue-default;
-                    text-shadow: 0px 4px 8px rgba(0, 0, 0, .2);
-                }
+            .botao-login {
+                @include estilo-texto ($azul-glacial, 1em, 700);
             }
         }
     }
