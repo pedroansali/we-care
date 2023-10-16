@@ -1,1 +1,28 @@
-<p>realizar-consulta works!</p>
+<div class="h2">Realizar Consulta</div>
+
+    <div>
+        <label for="data">Data: {{dataConsulta}}</label>
+
+        <label for="nomePaciente">Paciente: {{nomePaciente}}</label>
+        
+        <label for="valor">Valor (R$): {{valorConsulta}}</label>
+
+        <form>
+            <div>
+              <label for="meioPagamento">Meio de Pagamento:</label>
+              <select id="meioPagamento" name="meioPagamento" [(ngModel)]="meioPagamento" required>
+                <option value="Credito">Cartão de Crédito</option>
+                <option value="Debito">Cartão de Débito</option>
+                <option value="Pix">Pix</option>
+                <option value="Dinheiro">Dinheiro</option>
+                <option value="Outro">Outro</option>
+              </select>
+            </div>
+            <div>
+              <label for="notas">Anotações de Consulta:</label>
+              <textarea id="anotacoes" name="anotacoes" placeholder="Digite aqui suas anotações..." [(ngModel)]="notasConsulta" required></textarea>
+            </div>
+        </form>
+    </div>
+    <button type="submit" (click)="updateConsulta()" mat-dialog-close="closeAddSessao">Finalizar Consulta</button>
+    <button mat-dialog-close="closeAddSessao">Descartar</button>

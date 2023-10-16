@@ -57,6 +57,61 @@ export class HomeComponent {
       })();
     })();
 
+    if(this.isPsicologo()){
+      //PEGAR AGENDAMENTOS
+      (async () => {
+        const Appointment: Parse.Object = Parse.Object.extend('Appointment');
+        const query: Parse.Query = new Parse.Query(Appointment).include("owner");
+
+        try {
+          const results: Parse.Object[] = await query.find();
+          for (const object of results) {
+            console.log(object);
+            
+            const Session: Parse.Object = Parse.Object.extend('Session');
+            const querySession: Parse.Query = new Parse.Query(Session).equalTo('objectId', object.attributes.idSessao.id);
+            const User: Parse.User = new Parse.User();
+            const queryUser: Parse.Query = new Parse.Query(User);
+            try {
+              let user: Parse.Object = await queryUser.get(object.attributes.idPaciente.id);
+              //console.log(user);
+              const results: Parse.Object[] = await querySession.find();
+              for (const sessao of results) {  
+                const data: string = sessao.get('data');
+                const dataOriginal = new Date(data);
+                const dataFormatoBrasileiro = `${dataOriginal.getDate().toString().padStart(2, '0')}/` +
+                  `${(dataOriginal.getMonth() + 1).toString().padStart(2, '0')}/` +
+                  `${dataOriginal.getFullYear()} ` + 
+                  `às ${dataOriginal.getHours().toString().padStart(2, '0')}:` +
+                  `${dataOriginal.getMinutes().toString().padStart(2, '0')}`;            
+                const idPsicologo = sessao.get('idPsicologo');
+                console.log(idPsicologo);
+                //SE SESSAO REFERENTE AO AGENDAMENTO FOR DO PSICOLOGO
+                //console.log(object);                
+                if(idPsicologo.id == currentUser.id && object.attributes.realizado == false){
+                  //PEGAR INFO DO AGENDAMENTO E ADICIONAR A LISTA
+                  this.agendamentoAtual = {
+                    id: object.id,
+                    nome: object.attributes.idPaciente.attributes.nome,//nome paciente
+                    valor: object.attributes.idSessao.attributes.valor,
+                    data: dataFormatoBrasileiro,
+                  }
+                  console.log(this.agendamentoAtual);
+                  this.listaAgendamentos.push(this.agendamentoAtual);
+                  console.log(this.listaAgendamentos);
+                }
+              }
+            } catch (error: any) {
+              console.error('Error ao buscar sessao', error);
+            }
+            
+          }
+        } catch (error: any) {
+          console.error('Error while fetching Appointment', error);
+        }
+      })();
+
+    }else{
     //LISTAR CONSULTAS AGENDADAS PRO USUÁRIO
       (async () => {
         const Appointment: Parse.Object = Parse.Object.extend('Appointment');
@@ -97,12 +152,13 @@ export class HomeComponent {
 
                       this.agendamentoAtual  = {
                         id: agendamento.id,
-                        nomePsicologo: user.attributes.nome,
+                        nome: user.attributes.nome,
                         valor: sessao.get('valor'),
                         data: dataFormatoBrasileiro,
                       }
 
                       this.listaAgendamentos.push(this.agendamentoAtual);
+                      
                     } catch (error: any) {
                       console.error('Erro ao buscar nome do psicologo', error);
                     }
@@ -121,7 +177,7 @@ export class HomeComponent {
           console.error('Erro ao buscar agendamentos do usuário', error);
         }
       })();
-    
+    }
   }
 
   isPsicologo(){
@@ -161,12 +217,13 @@ export class HomeComponent {
     });
   }
 
-  openConsulta(){
+  openConsulta(id: string, data: string, nomePaciente: string, valor: number){
     this.dialogRef.open(RealizarConsultaComponent, {
       data : {
-        nomeUsuario : this.nomeUsuario,
-        idUsuario : this.idUsuario,
-        roleUsuario : this.roleUsuario,
+        nomePaciente : nomePaciente,
+        data : data,
+        idConsulta: id,
+        valor: valor,
       },
       height: '400px',
       width: '600px',

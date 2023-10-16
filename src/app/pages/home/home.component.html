@@ -15,12 +15,22 @@
       <mat-list *ngIf="!isPsicologo()">
         <mat-list-item *ngFor="let item of listaAgendamentos">
           <span matListItemTitle>Data: {{item.data}}</span>
-          <span matListItemLine>Profissional: {{item.nomePsicologo}}</span>
+          <span matListItemLine>Profissional: {{item.nome}}</span>
           <span matListItemLine>Valor: {{item.valor}}</span>
         </mat-list-item>
       </mat-list>
 
-      <h2 *ngIf="isPsicologo()">Sessões Agendadas</h2>      
+      <h2 *ngIf="isPsicologo()">Sessões Agendadas</h2>  
+      
+      <mat-list *ngIf="isPsicologo()">
+        <mat-list-item *ngFor="let item of listaAgendamentos">
+          <span matListItemTitle>Data: {{item.data}}</span>
+          <span matListItemLine>Paciente: {{item.nome}}</span>
+          <span matListItemLine>Valor: {{item.valor}}</span>
+          <button mat-raised-button color="primary" (click)="openConsulta(item.id, item.data, item.nome, item.valor)">Realizar Consulta</button>
+        </mat-list-item>
+      </mat-list>
+      
     </div>
   </div>
 

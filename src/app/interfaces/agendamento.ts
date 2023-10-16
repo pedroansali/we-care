@@ -1,7 +1,6 @@
 export interface Agendamento {
     id: any;
-    nomePsicologo: string;
-    //nomePaciente: string;
+    nome: string;
     //dia: number;
     //mes: number;
     //ano: number;
