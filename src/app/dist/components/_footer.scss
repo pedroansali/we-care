@@ -1,0 +1,18 @@
+@import '../abstract/functions';
+@import '../abstract/variables';
+
+.rodape {
+    position: fixed;
+    bottom: 0;
+    width: 100vw;
+    height: 10vh;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    background-color: $azul-algodao;
+    box-shadow: 0 -5px 5px -5px rgba(0, 0, 0, 0.5);
+    @include estilo-texto ($preto, 1.2em, 600);
+}
