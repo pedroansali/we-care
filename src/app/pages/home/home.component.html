@@ -58,36 +58,30 @@
                     <table class="tabela">
                         <tr class="tabela-linha">
                             <th class="tabela-cabecalho">
-                                Número da consulta
-                            </th>
-                            <th class="tabela-cabecalho">
-                                Título da consulta
-                            </th>
-                            <th class="tabela-cabecalho">
-                                Nome do profissional
-                            </th>
-                            <th class="tabela-cabecalho">
                                 Data da consulta
                             </th>
                             <th class="tabela-cabecalho">
-                                Horário da consulta
+                                Nome do paciente
+                            </th>
+                            <th class="tabela-cabecalho">
+                                Valor da consulta
+                            </th>
+                            <th class="tabela-cabecalho">
+                                Status
                             </th>
                         </tr>
-                        <tr class="tabela-linha">
+                        <tr class="tabela-linha" *ngFor="let item of listaAgendamentos">
                             <td class="tabela-celula">
-                                789325
+                                {{item.data}}
                             </td>
                             <td class="tabela-celula">
-                                Terapia
+                                {{item.nome}}
                             </td>
                             <td class="tabela-celula">
-                                Dr. Pedro
+                                {{item.valor}}
                             </td>
                             <td class="tabela-celula">
-                                17/11/2023
-                            </td>
-                            <td class="tabela-celula">
-                                14:30
+                                <button  (click)="openConsulta(item.id, item.data, item.nome, item.valor)">Realizar Consulta</button>
                             </td>
                         </tr>
                     </table>

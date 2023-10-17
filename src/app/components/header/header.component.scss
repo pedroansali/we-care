@@ -5,7 +5,7 @@
     background-color: transparent;
     top: 0;
     width: 100vw;
-    height: 8vh;
+    height: 18vh;
 
     display: flex;
     justify-content: center;
@@ -57,6 +57,7 @@
 
             .cabecalho-botao-label {
                 font-size: 1em;
+                margin-top: 10px;
                 font-family: $montserrat-alt;
                 font-weight: 600;
                 color: $preto;
