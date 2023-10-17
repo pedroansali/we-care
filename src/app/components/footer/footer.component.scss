@@ -1,33 +1,18 @@
-@import '../../dist/variables';
-@import '../../dist/functions';
+@import '../../dist/abstract/functions';
+@import '../../dist/abstract/variables';
 
 .rodape {
-    bottom: 0%;
     position: fixed;
-    width: 100%;
+    bottom: 0;
+    width: 100vw;
     height: 10vh;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
     align-items: center;
-    background-color: $white;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4);
 
-    .rodape-conteudo {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        padding: 1rem;
-
-        align-items: center;
-
-        .rodape-texto {
-            padding: 1em;
-            font-family: $fonte-conteudo;
-            font-size: 0.8rem;
-            font-weight: 500;
-            @include estilo-gradiente($gradiente-02);
-        }
-        .rodape-imagem {
-            width: 4em;
-            height: 4em;
-        }
-    }
+    background-color: $azul-algodao;
+    box-shadow: 0 -5px 5px -5px rgba(0, 0, 0, 0.5);
+    @include estilo-texto ($preto, 1.2em, 600);
 }

@@ -17,7 +17,7 @@ import { Agendamento } from '../../interfaces/agendamento';
 
 @Component({
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss', '../../../styles.scss']
 })
 export class HomeComponent {
   listaAgendamentos: Agendamento[] = [];
