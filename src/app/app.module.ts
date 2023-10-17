@@ -19,6 +19,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { RealizarConsultaComponent } from './components/realizar-consulta/realizar-consulta.component';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
+import { PerfilComponent } from './pages/perfil/perfil.component';
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import { MatIconModule } from '@angular/material/icon';
     CriarAgendamentoComponent,
     FooterComponent,
     RealizarConsultaComponent,
+    PerfilComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,50 +1,27 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component } from '@angular/core';
 import * as Parse from 'parse';
-import {MatDialog} from '@angular/material/dialog';
-import { DisponibilizaSessaoComponent } from '../../components/disponibiliza-sessao/disponibiliza-sessao.component'
-import { CriarAgendamentoComponent } from 'src/app/components/criar-agendamento/criar-agendamento.component';
-import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
-import { MatTableDataSource } from '@angular/material/table';
-import { RealizarConsultaComponent } from 'src/app/components/realizar-consulta/realizar-consulta.component';
-import { MatListModule } from '@angular/material/list';
-import { MatIconModule } from '@angular/material/icon';
-import { Agendamento } from '../../interfaces/agendamento';
-
-
-
+import { Agendamento } from 'src/app/interfaces/agendamento';
 
 
 @Component({
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss', '../../../styles.scss']
+  selector: 'app-perfil',
+  templateUrl: './perfil.component.html',
+  styleUrls: ['./perfil.component.scss', '../../../styles.scss']
 })
-export class HomeComponent {
-  listaAgendamentos: Agendamento[] = [];
-  agendamentoAtual: Agendamento;
-  dataAgendamento: string;
-  usuario: string;
-  senha: string;
+export class PerfilComponent {
+  roleUsuario: string;
   nomeUsuario: string;
   idUsuario: string;
-  roleUsuario: string;
-  modal: any;
-  idPsicologoSessao: string;
   psicologo: boolean;
-  
+  listaAgendamentos: Agendamento[] = [];
+  agendamentoAtual: Agendamento;
+  idPsicologoSessao: string;;
+
   ngOnInit() {
     const currentUser = Parse.User.current();
-    
-    //console.log(currentUser.role)
-    // Dado do usuário que vem do login
-    this.route.queryParams.subscribe(params => {
-      this.usuario = params['usuario'];
-      this.senha = params['senha'];
-    });
     (async () => {
       (async () => {
         try {
-          let user: Parse.User = await Parse.User.logIn(this.usuario,this.senha);
           const currentUser: Parse.User = Parse.User.current();
           console.log(currentUser.id);
           console.log(currentUser.attributes.role);
@@ -187,12 +164,8 @@ export class HomeComponent {
           console.error('Erro ao logar', error);
         }
       })();
-
-      
-      
     })();
 
-    
   }
 
   isPsicologo(){
@@ -203,48 +176,5 @@ export class HomeComponent {
       return true;
     }
   }
-
-  constructor(private route: ActivatedRoute, public dialogRef: MatDialog) { 
-    
-  }
-
-  addAgendamento(){
-    this.dialogRef.open(CriarAgendamentoComponent, {
-      data : {
-        nomeUsuario : this.nomeUsuario,
-        idUsuario : this.idUsuario,
-        roleUsuario : this.roleUsuario,
-      },
-      height: '400px',
-      width: '600px',
-    });
-  }
-
-  openSessao(){
-    this.dialogRef.open(DisponibilizaSessaoComponent, {
-      data : {
-        nomeUsuario : this.nomeUsuario,
-        idUsuario : this.idUsuario,
-        roleUsuario : this.roleUsuario,
-      },
-      height: '400px',
-      width: '600px',
-    });
-  }
-
-  openConsulta(id: string, data: string, nomePaciente: string, valor: number){
-    this.dialogRef.open(RealizarConsultaComponent, {
-      data : {
-        nomePaciente : nomePaciente,
-        data : data,
-        idConsulta: id,
-        valor: valor,
-      },
-      height: '400px',
-      width: '600px',
-    });
-  }
 }
-
-
 

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>WeCare - Perfil</title>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,300,1,0" />
+        <link rel="stylesheet" href="../../../styles.scss">
+        <link rel="icon" href="/assets/logo-mini.png" type="image/x-icon">
+    </head>
+    <body>
+        <app-header></app-header>
+        <main class="principal-perfil">
+            <h1 class="perfil-titulo">
+                Consultas marcadas
+            </h1>
+            <!--Usar implementação em JavaScript para geração de uma tabela conforme os dados de cada usuário. A inserção de forma manual é pouco eficaz.-->
+            <div class="perfil-container-consultas tabela-consultas" >
+                <table class="tabela" *ngIf="!isPsicologo()">
+                    <tr class="tabela-linha">
+                        <th class="tabela-cabecalho">
+                            Data da consulta
+                        </th>
+                        <th class="tabela-cabecalho">
+                            Nome do Profissional
+                        </th>
+                        <th class="tabela-cabecalho">
+                            Valor da consulta
+                        </th>
+                    </tr>
+                    <tr class="tabela-linha">
+                        <td class="tabela-celula">
+                            789325
+                        </td>
+                        <td class="tabela-celula">
+                            Terapia
+                        </td>
+                        <td class="tabela-celula">
+                            Dr. Pedro
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </main>
+        <app-footer></app-footer>
+    </body>
+</html>

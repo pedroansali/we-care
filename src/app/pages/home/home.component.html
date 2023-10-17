@@ -35,7 +35,7 @@
         <main class="home-principal">
             <div class="home-bloco01">
                 <h1 class="bloco01-titulo">
-                    Bem vind@ ao <strong class="destaque">We</strong><strong class="destaque">Care</strong>, {{nomeUsuario}}
+                    Bem vind@ ao <strong class="destaque">We</strong><strong class="destaque">Care</strong>
                 </h1>
                 <!--Alterar texto de descrição para se adequar à proposta do projeto
                 <p class="bloco01-texto">
@@ -55,7 +55,7 @@
                 </h1>
                 <!--Usar implementação em JavaScript para geração de uma tabela conforme os dados de cada usuário. A inserção de forma manual é pouco eficaz.-->
                 <div class="bloco02-tabela-consultas tabela-consultas">
-                    <table class="tabela">
+                    <table class="tabela" *ngIf="isPsicologo()">
                         <tr class="tabela-linha">
                             <th class="tabela-cabecalho">
                                 Data da consulta
@@ -78,10 +78,34 @@
                                 {{item.nome}}
                             </td>
                             <td class="tabela-celula">
-                                {{item.valor}}
+                                R$ {{item.valor}}
                             </td>
                             <td class="tabela-celula">
                                 <button  (click)="openConsulta(item.id, item.data, item.nome, item.valor)">Realizar Consulta</button>
+                            </td>
+                        </tr>
+                    </table>
+                    <table class="tabela" *ngIf="!isPsicologo()">
+                        <tr class="tabela-linha">
+                            <th class="tabela-cabecalho">
+                                Data da consulta
+                            </th>
+                            <th class="tabela-cabecalho">
+                                Nome do Profissional
+                            </th>
+                            <th class="tabela-cabecalho">
+                                Valor da consulta
+                            </th>
+                        </tr>
+                        <tr class="tabela-linha"  *ngFor="let item of listaAgendamentos">
+                            <td class="tabela-celula">
+                                {{item.data}}
+                            </td>
+                            <td class="tabela-celula">
+                                {{item.nome}}
+                            </td>
+                            <td class="tabela-celula">
+                                R$ {{item.valor}}
                             </td>
                         </tr>
                     </table>
