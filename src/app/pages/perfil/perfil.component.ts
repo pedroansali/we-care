@@ -15,7 +15,8 @@ export class PerfilComponent {
   psicologo: boolean;
   listaAgendamentos: Agendamento[] = [];
   agendamentoAtual: Agendamento;
-  idPsicologoSessao: string;;
+  idPsicologoSessao: string;
+  idSessaoApagada: string;
 
   ngOnInit() {
     const currentUser = Parse.User.current();
@@ -166,6 +167,47 @@ export class PerfilComponent {
       })();
     })();
 
+  }
+
+  removeConsulta(id: string, data: string, nomePaciente: string, valor: number){
+    //deleta o agendamento
+    (async () => {
+      const query: Parse.Query = new Parse.Query('Appointment');
+      try {
+        // here you put the objectId that you want to delete
+        const object: Parse.Object = await query.get(id);
+        try {
+          
+          const response: any = await object.destroy();
+          console.log('Deleted ParseObject', response);
+
+          //altera a sessao pra nao agendada
+    (async () => {
+      const Session: Parse.Object = Parse.Object.extend('Session');
+      const query: Parse.Query = new Parse.Query(Session);
+      try {
+        // here you put the objectId that you want to update
+        const object: Parse.Object = await query.get(response.attributes.idSessao);
+        object.set('agendada', false);
+        try {
+          const response: Parse.Object = await object.save();
+          console.log(response.get('agendada'));
+          console.log('Session updated', response);
+        } catch (error: any) {
+          console.error('Error while updating Session', error);
+          }
+        } catch (error: any) {
+          console.error('Error while retrieving object Session', error);
+        }
+    })();
+        } catch (error: any) {
+          console.error('Error while deleting ParseObject', error);
+        }
+      } catch (error: any) {
+        console.error('Error while retrieving ParseObject', error);
+      }
+    })();
+    
   }
 
   isPsicologo(){

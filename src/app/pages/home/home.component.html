@@ -47,15 +47,15 @@
                 </div>
             </div>
             <div class="home-bloco02">
-                <h1 *ngIf="!isPsicologo()" class="bloco02-titulo">
+                <h1 *ngIf="!psicologo" class="bloco02-titulo">
                     Consultas marcadas
                 </h1>
-                <h1 *ngIf="isPsicologo()" class="bloco02-titulo">
+                <h1 *ngIf="psicologo" class="bloco02-titulo">
                     Sessões agendadas
                 </h1>
                 <!--Usar implementação em JavaScript para geração de uma tabela conforme os dados de cada usuário. A inserção de forma manual é pouco eficaz.-->
                 <div class="bloco02-tabela-consultas tabela-consultas">
-                    <table class="tabela" *ngIf="isPsicologo()">
+                    <table class="tabela" *ngIf="psicologo">
                         <tr class="tabela-linha">
                             <th class="tabela-cabecalho">
                                 Data da consulta
@@ -85,7 +85,7 @@
                             </td>
                         </tr>
                     </table>
-                    <table class="tabela" *ngIf="!isPsicologo()">
+                    <table class="tabela" *ngIf="!psicologo">
                         <tr class="tabela-linha">
                             <th class="tabela-cabecalho">
                                 Data da consulta

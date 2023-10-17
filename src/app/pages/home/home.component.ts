@@ -44,7 +44,7 @@ export class HomeComponent {
     (async () => {
       (async () => {
         try {
-          let user: Parse.User = await Parse.User.logIn(this.usuario,this.senha);
+          //let user: Parse.User = await Parse.User.logIn(this.usuario,this.senha);
           const currentUser: Parse.User = Parse.User.current();
           console.log(currentUser.id);
           console.log(currentUser.attributes.role);
