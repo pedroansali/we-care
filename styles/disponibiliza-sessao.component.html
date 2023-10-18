@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="../../../styles.scss">
+        <link rel="stylesheet" href="/styles/style.css">
     </head>
     <body class="modal-02">
         <h1 class="modal-02-titulo">Adicionar nova sessão</h1>
@@ -32,7 +32,7 @@
             </div>
 
             <div class="modal-02-botoes">
-                <button mat-button  type="submit" mat-dialog-close="closeAddAgendamento" class="modal-02-botao">
+                <button mat-button (click)="addAgendamento()" class="modal-02-botao">
                     Disponibilizar Sessão
                 </button>
                 <button mat-dialog-close="closeAddAgendamento" class="modal-02-botao">
@@ -42,5 +42,4 @@
         </form>
     </body>
 </html>
-
 

@@ -1,0 +1,119 @@
+@mixin estilo-blocos ($altura, $display, $direcao, $padding) {
+    height: $altura;
+    display: $display;
+    flex-direction: $direcao;
+    padding: $padding;
+}
+
+@mixin estilo-texto ($cor, $tamanho, $peso){
+    font-family: $montserrat-alt;
+    color: $cor;
+    font-size: $tamanho;
+    font-weight: $peso;
+}
+
+@mixin estilo-card ($cor-de-fundo, $altura-info, $largura-info) {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: $cor-de-fundo;
+    padding: 1.5rem;
+    height: $altura-info;
+    width: $largura-info;
+    justify-content: space-between;
+    border-radius: 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+
+    .consulta-titulo {
+        @include estilo-texto ($preto, 1.5em, 700);
+    }
+
+    .info-titulo {
+        @include estilo-texto ($preto, 1.3em, 800);
+    }
+
+    .info-textos {
+        @include estilo-texto ($preto, 1.1em, 500);
+    }
+}
+
+@mixin estilo-info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 10px;
+}
+
+@mixin etilo-botao-ancora ($alinhamento, $padding, $borda, $cor-de-fundo, $largura, $raio-da-borda){
+    text-align: $alinhamento;
+    padding: $padding;
+    border: $borda;
+    background-color: $cor-de-fundo;
+    width: $largura;
+    @include estilo-texto ($preto, 1.2em, 600);
+    border-radius: $raio-da-borda;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+
+@mixin estilo-botao-google-icons ($cor-de-fundo, $padding, $raio-da-borda, $tamanho, $cor, $preenchimento, $peso) {
+    cursor: pointer;
+    background-color: $cor-de-fundo;
+    padding: $padding;
+    border-radius: $raio-da-borda;
+    font-size: $tamanho;
+    color: $cor;
+    font-variation-settings:
+    'FILL' $preenchimento,
+    'wght' $peso,
+    'GRAD' 0,
+    'opsz' 24;
+}
+
+@mixin estilo-flexbox ($direcao, $alinhamento-X, $alinhamento-Y, $padding, $gap){
+    display: flex;
+    flex-direction: $direcao;
+    justify-content: $alinhamento-X;
+    align-items: $alinhamento-Y;
+    padding: $padding;
+    gap: $gap;
+}
+
+@mixin estilo-tabelas ($largura, $tamanho-fonte){
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    background-color: $branco-sal;
+    border-radius: 10px;
+    text-align: center;
+    height: 100%;
+    width: $largura;
+    padding: 10px;
+
+    .tabela-linha {
+        margin-top: 10px;
+        .tabela-cabecalho {
+            @include estilo-texto ($preto, $tamanho-fonte, 800);
+            padding: 1rem;
+            height: 5%;
+            border-right: 2px solid $branco-frances;
+            border-bottom: 2px solid $branco-frances;
+        }
+
+        .tabela-cabecalho:last-child {
+            border-right: none;
+        }
+        .tabela-celula {
+            @include estilo-texto ($preto, $tamanho-fonte, 500);
+            padding: 1rem;
+            height: 5%;
+            border-right: 2px solid $branco-frances
+        }
+
+        .tabela-celula:last-child {
+            border-right: none;
+        }
+    }
+}

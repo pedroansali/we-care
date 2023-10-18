@@ -3,15 +3,20 @@ import * as Parse from 'parse';
 import { Sessao } from '../../interfaces/sessao';
 import { format } from 'date-fns';
 import { MatSelectChange } from '@angular/material/select';
+import { Router } from '@angular/router';
+
 
 
 
 @Component({
   selector: 'app-criar-agendamento',
   templateUrl: './criar-agendamento.component.html',
-  styleUrls: ['./criar-agendamento.component.scss']
+  styleUrls: ['./criar-agendamento.component.scss', '../../../styles.scss']
 })
 export class CriarAgendamentoComponent {
+
+  constructor( private router: Router) {
+  }
 
   sessoes: Sessao[] = [];
 
@@ -55,6 +60,7 @@ export class CriarAgendamentoComponent {
       }
     })();
   }
+  
 
   addAgendamento(){
     //MUDAR STATUS DE SESSAO PARA NAO DISPONIVEL MAIS
@@ -90,10 +96,13 @@ export class CriarAgendamentoComponent {
         const result: Parse.Object = await myNewObject.save();
         // Access the Parse Object attributes using the .GET method
         console.log('Appointment created', result);
+        
       } catch (error: any) {
         console.error('Error while creating Appointment: ', error);
       }
     })();
+
+    
   }
 
   ngOnInit(){

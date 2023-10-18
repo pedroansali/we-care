@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../../styles.scss">
+    <link rel="stylesheet" href="/styles/style.css">
   </head>
   <body class="modal-01">
     <h1 class="modal-01-titulo">Agendamento de Sessão</h1>
@@ -13,7 +13,7 @@
 
     <mat-form-field class="modal01-campo">
     <mat-label></mat-label>
-      <mat-select  [(ngModel)]="dataEscolhida" >
+      <mat-select class="modal01-select" [(ngModel)]="dataEscolhida" >
         <mat-option *ngFor="let opcao of sessoes" [value]="opcao.data" (onSelectionChange)="idSessaoEscolhida(opcao.id)">
           {{ opcao.data }}
         </mat-option>
@@ -24,11 +24,11 @@
       Profissional: <strong class="texto-destaque">{{nomePsicologoSessaoAgendada}}</strong>
     </h3>
     <h3 class="modal-01-texto">
-      Valor: <strong class="texto-destaque">R$ {{valorSessaoAgendada}}</strong>
+      Valor: <strong class="texto-destaque">{{valorSessaoAgendada}}</strong>
     </h3>
     
     <div class="modal-01-botoes">
-      <button mat-button (click)="addAgendamento()" mat-dialog-close="closeAddAgendamento" class="modal-01-botao">
+      <button mat-button (click)="addAgendamento()" class="modal-01-botao">
         Agendar Consulta
       </button>
       <button mat-dialog-close="closeAddAgendamento" class="modal-01-botao">
@@ -37,3 +37,4 @@
     </div>
   </body>
 </html>
+

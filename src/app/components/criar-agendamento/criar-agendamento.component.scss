@@ -1,3 +1,300 @@
-body{
-    background-color: white;
+@import url("https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
 }
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.modal-01 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  gap: 20px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 0px !important;
+}
+.modal-01 .modal-01-titulo {
+  font-family: "Montserrat Alternates", sans-serif;
+  color: #050607;
+  font-size: 3em;
+  font-weight: 800;
+  text-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+.modal-01 .modal-01-texto:nth-child(2) {
+  font-family: "Montserrat Alternates", sans-serif;
+  color: #F8F9FA;
+  font-size: 1.1em;
+  font-weight: 600;
+  text-align: center;
+  width: 100%;
+  padding: 1rem 1.5rem;
+  background-color: #678ED7;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+.modal-01 .modal-01-texto:nth-child(3) {
+  font-family: "Montserrat Alternates", sans-serif;
+  color: #050607;
+  font-size: 1em;
+  font-weight: 700;
+  text-align: center;
+}
+.modal-01 .modal-01-texto:nth-child(5) {
+  font-family: "Montserrat Alternates", sans-serif;
+  color: #050607;
+  font-size: 1em;
+  font-weight: 700;
+  text-align: center;
+}
+.modal-01 .modal-01-texto:nth-child(5) .texto-destaque {
+  font-family: "Montserrat Alternates", sans-serif;
+  color: #050607;
+  font-size: 1em;
+  font-weight: 500;
+  background-color: transparent;
+}
+.modal-01 .modal-01-texto:nth-child(6) {
+  font-family: "Montserrat Alternates", sans-serif;
+  color: #050607;
+  font-size: 1em;
+  font-weight: 700;
+  text-align: center;
+}
+.modal-01 .modal-01-texto:nth-child(6) .texto-destaque {
+  font-family: "Montserrat Alternates", sans-serif;
+  color: #050607;
+  font-size: 1em;
+  font-weight: 500;
+  background-color: transparent;
+}
+.modal-01 .modal01-campo {
+  font-family: "Montserrat Alternates", sans-serif;
+  color: #050607;
+  font-size: 0.9em;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.modal-01 .modal01-campo .modal01-select {
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+  width: 50%;
+  background-color: #F8F9FA;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+.modal-01 .modal-01-botoes {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  padding: 1rem;
+}
+.modal-01 .modal-01-botoes .modal-01-botao {
+  font-family: "Montserrat Alternates", sans-serif;
+  color: #050607;
+  font-size: 0.9em;
+  font-weight: 600;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 1em 1.5rem;
+  background-color: #CED4DA;
+  border-radius: 20px;
+  border: none;
+}
+.modal-01 .modal-01-botoes .modal-01-botao:hover {
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+  background-color: #70A941;
+  cursor: pointer;
+  transition: 0.4s;
+}
+.modal-01 .modal-01-botoes .modal-01-botao:nth-child(2):hover {
+  background-color: rgb(247, 95, 95);
+}
+
+.modal-02 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  gap: 20px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+}
+.modal-02 .modal-02-titulo {
+  font-family: "Montserrat Alternates", sans-serif;
+  color: #050607;
+  font-size: 2.8em;
+  font-weight: 800;
+  text-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+.modal-02 .modal-02-formulario {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  gap: 40px;
+}
+.modal-02 .modal-02-formulario .modal-02-campos {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: none;
+  gap: 20px;
+}
+.modal-02 .modal-02-formulario .modal-02-campos .modal-02-nome {
+  font-family: "Montserrat Alternates", sans-serif;
+  color: #050607;
+  font-size: 1em;
+  font-weight: 700;
+  text-align: center;
+  background-color: #678ED7;
+  padding: 0.7em 1em;
+  border-radius: 20px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+.modal-02 .modal-02-formulario .modal-02-campos .modal-02-nome .texto-destaque {
+  font-family: "Montserrat Alternates", sans-serif;
+  color: #050607;
+  font-size: 1em;
+  font-weight: 500;
+  background-color: transparent;
+}
+.modal-02 .modal-02-formulario .modal-02-campos .modal-02-data {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: none;
+  gap: 10px;
+  width: 100%;
+}
+.modal-02 .modal-02-formulario .modal-02-campos .modal-02-data .modal-02-label-data {
+  font-family: "Montserrat Alternates", sans-serif;
+  color: #050607;
+  font-size: 1em;
+  font-weight: 500;
+}
+.modal-02 .modal-02-formulario .modal-02-campos .modal-02-data .campo-data {
+  font-family: "Montserrat Alternates", sans-serif;
+  color: #050607;
+  font-size: 0.8em;
+  font-weight: 500;
+  padding: 0.5rem;
+  border-radius: 20px;
+  border: 2px solid #CED4DA;
+  background-color: #F8F9FA;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+.modal-02 .modal-02-formulario .modal-02-campos .modal-02-valor {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: none;
+  gap: 10px;
+  width: 100%;
+}
+.modal-02 .modal-02-formulario .modal-02-campos .modal-02-valor .modal-02-label-valor {
+  font-family: "Montserrat Alternates", sans-serif;
+  color: #050607;
+  font-size: 1em;
+  font-weight: 500;
+}
+.modal-02 .modal-02-formulario .modal-02-campos .modal-02-valor .campo-valor {
+  font-family: "Montserrat Alternates", sans-serif;
+  color: #050607;
+  font-size: 0.8em;
+  font-weight: 500;
+  padding: 0.5rem;
+  border-radius: 20px;
+  border: 2px solid #CED4DA;
+  background-color: #F8F9FA;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+.modal-02 .modal-02-formulario .modal-02-botoes {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+.modal-02 .modal-02-formulario .modal-02-botoes .modal-02-botao {
+  font-family: "Montserrat Alternates", sans-serif;
+  color: #050607;
+  font-size: 0.9em;
+  font-weight: 600;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 1em 1.5rem;
+  background-color: #CED4DA;
+  border-radius: 20px;
+  border: none;
+}
+.modal-02 .modal-02-formulario .modal-02-botoes .modal-02-botao:hover {
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+  background-color: #70A941;
+  cursor: pointer;
+  transition: 0.4s;
+}
+.modal-02 .modal-02-formulario .modal-02-botoes .modal-02-botao:nth-child(2):hover {
+  background-color: rgb(247, 95, 95);
+}/*# sourceMappingURL=style.css.map */

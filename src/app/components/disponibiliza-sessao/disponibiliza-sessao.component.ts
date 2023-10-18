@@ -8,7 +8,7 @@ import * as Parse from 'parse';
 @Component({
   selector: 'app-disponibiliza-sessao',
   templateUrl: './disponibiliza-sessao.component.html',
-  styleUrls: ['./disponibiliza-sessao.component.scss']
+  styleUrls: ['./disponibiliza-sessao.component.scss', '../../../styles.scss']
 })
 export class DisponibilizaSessaoComponent implements OnInit{
   nomeUsuario: string;

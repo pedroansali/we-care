@@ -1,0 +1,193 @@
+@import './abstract/functions';
+@import './abstract/reset';
+@import './abstract/variables';
+
+.modal-01 {
+    @include estilo-flexbox(column, center, center, 2rem, 20px);
+    width: fit-content; 
+    height: fit-content;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+
+    .modal-01-titulo {
+        @include estilo-texto($preto, 3em, 800);
+        text-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+
+    .modal-01-texto:nth-child(2) {
+        @include estilo-texto($branco-sal, 1.1em, 600);
+        text-align: center;
+        width: 100%;
+        padding: 1rem 1.5rem;
+        background-color: $azul-algodao;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .modal-01-texto:nth-child(3) {
+        @include estilo-texto($preto, 1em, 700);
+        text-align: center;
+    }
+
+    .modal-01-texto:nth-child(5) {
+        @include estilo-texto($preto, 1em, 700);
+        text-align: center;
+
+        .texto-destaque {
+            @include estilo-texto($preto, 1em, 500);
+            background-color: transparent;
+        }
+    }
+
+    .modal-01-texto:nth-child(6) {
+        @include estilo-texto($preto, 1em, 700);
+        text-align: center;
+
+        .texto-destaque {
+            @include estilo-texto($preto, 1em, 500);
+            background-color: transparent;
+        }
+    }
+
+    .modal01-campo {
+        @include estilo-texto($preto, .9em, 600);
+        display: flex;
+        justify-content: center;
+        width: 100%;
+
+        .modal01-select {
+            display: flex;
+            justify-content: center;
+            padding: 1rem;
+            width: 50%;
+            background-color: $branco-sal;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+    }
+    .modal-01-botoes {
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+        padding: 1rem;
+
+        .modal-01-botao {
+            @include estilo-texto($preto, .9em, 600);
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 1em 1.5rem;
+            background-color: $branco-frances;
+            border-radius: 20px;
+            border: none;
+        }
+
+        .modal-01-botao:hover {
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+            background-color: $verde-aspargo;
+            cursor: pointer;
+            transition: 0.4s;
+        }
+
+        .modal-01-botao:nth-child(2):hover {
+            background-color: rgb(247, 95, 95);
+        }
+    }
+}
+
+.modal-02 {
+    @include estilo-flexbox(column, center, center, 2rem, 20px);
+    width: fit-content; 
+    height: fit-content;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+
+    .modal-02-titulo {
+        @include estilo-texto($preto, 2.8em, 800);
+        text-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+
+    .modal-02-formulario {
+        @include estilo-flexbox(column, center, center, 1rem, 40px);
+
+        .modal-02-campos {
+            @include estilo-flexbox(column, center, center, none, 20px);
+
+            .modal-02-nome {
+                @include estilo-texto($preto, 1em, 700);
+                text-align: center;
+                background-color: $azul-algodao;
+                padding: .7em 1em;
+                border-radius: 20px;
+                box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+
+                .texto-destaque {
+                    @include estilo-texto($preto, 1em, 500);
+                    background-color: transparent;
+                }
+            }
+
+            .modal-02-data {
+                @include estilo-flexbox(row, center, center, none, 10px);
+                width: 100%;
+
+                .modal-02-label-data {
+                    @include estilo-texto($preto, 1em, 500);
+                }
+                
+                .campo-data {
+                    @include estilo-texto($preto, .8em, 500);
+                    padding: .5rem;
+                    border-radius: 20px;
+                    border: 2px solid $branco-frances;
+                    background-color: $branco-sal;
+                    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+                }
+            }
+
+            .modal-02-valor {
+                @include estilo-flexbox(row, center, center, none, 10px);
+                width: 100%;
+
+                .modal-02-label-valor {
+                    @include estilo-texto($preto, 1em, 500);
+                }
+                
+                .campo-valor {
+                    @include estilo-texto($preto, .8em, 500);
+                    padding: .5rem;
+                    border-radius: 20px;
+                    border: 2px solid $branco-frances;
+                    background-color: $branco-sal;
+                    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+                }
+            }
+        }
+
+        .modal-02-botoes {
+            display: flex;
+            flex-direction: row;
+            gap: 20px;
+    
+            .modal-02-botao {
+                @include estilo-texto($preto, .9em, 600);
+                box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+                padding: 1em 1.5rem;
+                background-color: $branco-frances;
+                border-radius: 20px;
+                border: none;
+            }
+    
+            .modal-02-botao:hover {
+                box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+                background-color: $verde-aspargo;
+                cursor: pointer;
+                transition: 0.4s;
+            }
+
+            .modal-02-botao:nth-child(2):hover {
+                background-color: rgb(247, 95, 95);
+            }
+        }
+    }
+}

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/style.css">
+  </head>
+  <body class="modal-03">
+    <h1 class="modal-03-titulo">Realizar Consulta</h1>
+      <div>
+        <label class="modal-03-data" for="data">Data: 
+          <strong class="texto-destaque">
+            {{dataConsulta}}
+          </strong>
+        </label>
+  
+        <label class="modal-03-paciente" for="nomePaciente">Paciente: <strong class="texto-destaque">
+            {{nomePaciente}}
+          </strong>
+        </label>
+          
+          <label class="modal-03-valor" for="valor">Valor (R$): {{valorConsulta}}</label>
+  
+          <form>
+              <div>
+                <label for="meioPagamento">Meio de Pagamento:</label>
+                <select id="meioPagamento" name="meioPagamento" [(ngModel)]="meioPagamento" required>
+                  <option value="Credito">Cartão de Crédito</option>
+                  <option value="Debito">Cartão de Débito</option>
+                  <option value="Pix">Pix</option>
+                  <option value="Dinheiro">Dinheiro</option>
+                  <option value="Outro">Outro</option>
+                </select>
+              </div>
+              <div>
+                <label for="notas">Anotações de Consulta:</label>
+                <textarea id="anotacoes" name="anotacoes" placeholder="Digite aqui suas anotações..." [(ngModel)]="notasConsulta" required></textarea>
+              </div>
+          </form>
+      </div>
+      <button type="submit" (click)="updateConsulta()" mat-dialog-close="closeAddSessao">Finalizar Consulta</button>
+      <button mat-dialog-close="closeAddSessao">Descartar</button>
+  </body>
+</html>

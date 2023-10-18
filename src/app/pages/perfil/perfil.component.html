@@ -53,6 +53,9 @@
                         <th class="tabela-cabecalho">
                             Valor da consulta
                         </th>
+                        <th class="tabela-cabecalho">
+                            Status
+                        </th>
                     </tr>
                     <tr class="tabela-linha" *ngFor="let item of listaAgendamentos">
                         <td class="tabela-celula">
@@ -65,6 +68,7 @@
                             R$ {{item.valor}}
                         </td>
                         <td class="tabela-celula">
+                            <button  (click)="openConsulta(item.id, item.data, item.nome, item.valor)">Realizar Consulta</button> <br>
                             <button  (click)="removeConsulta(item.id, item.data, item.nome, item.valor)">Cancelar Consulta</button>
                         </td>
                     </tr>

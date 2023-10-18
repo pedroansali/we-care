@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import * as Parse from 'parse';
+import { RealizarConsultaComponent } from 'src/app/components/realizar-consulta/realizar-consulta.component';
 import { Agendamento } from 'src/app/interfaces/agendamento';
 
 
@@ -207,7 +209,6 @@ export class PerfilComponent {
         console.error('Error while retrieving ParseObject', error);
       }
     })();
-    
   }
 
   isPsicologo(){
@@ -218,5 +219,24 @@ export class PerfilComponent {
       return true;
     }
   }
+
+  constructor(public dialogRef: MatDialog) { 
+    
+  }
+
+
+  openConsulta(id: string, data: string, nomePaciente: string, valor: number){
+    this.dialogRef.open(RealizarConsultaComponent, {
+      data : {
+        nomePaciente : nomePaciente,
+        data : data,
+        idConsulta: id,
+        valor: valor,
+      },
+      height: '400px',
+      width: '600px',
+    });
+  }
+  
 }
 

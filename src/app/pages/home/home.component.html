@@ -48,10 +48,10 @@
             </div>
             <div class="home-bloco02">
                 <h1 *ngIf="!psicologo" class="bloco02-titulo">
-                    Consultas marcadas
+                    Próximas Consultas
                 </h1>
                 <h1 *ngIf="psicologo" class="bloco02-titulo">
-                    Sessões agendadas
+                    Próximas Sessões
                 </h1>
                 <!--Usar implementação em JavaScript para geração de uma tabela conforme os dados de cada usuário. A inserção de forma manual é pouco eficaz.-->
                 <div class="bloco02-tabela-consultas tabela-consultas">
@@ -64,13 +64,13 @@
                                 Nome do paciente
                             </th>
                             <th class="tabela-cabecalho">
-                                Valor da consulta
+                                Valor
                             </th>
                             <th class="tabela-cabecalho">
                                 Status
                             </th>
                         </tr>
-                        <tr class="tabela-linha" *ngFor="let item of listaAgendamentos">
+                        <tr class="tabela-linha" *ngFor="let item of listaAgendamentos.slice(0,3)">
                             <td class="tabela-celula">
                                 {{item.data}}
                             </td>
@@ -97,7 +97,7 @@
                                 Valor da consulta
                             </th>
                         </tr>
-                        <tr class="tabela-linha"  *ngFor="let item of listaAgendamentos">
+                        <tr class="tabela-linha"  *ngFor="let item of listaAgendamentos.slice(0,3)">
                             <td class="tabela-celula">
                                 {{item.data}}
                             </td>

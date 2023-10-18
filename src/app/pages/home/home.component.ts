@@ -220,6 +220,7 @@ export class HomeComponent {
     });
   }
 
+  
   openSessao(){
     this.dialogRef.open(DisponibilizaSessaoComponent, {
       data : {
@@ -227,8 +228,8 @@ export class HomeComponent {
         idUsuario : this.idUsuario,
         roleUsuario : this.roleUsuario,
       },
-      height: '400px',
-      width: '600px',
+      height: '415px',
+      width: '500px',
     });
   }
 
